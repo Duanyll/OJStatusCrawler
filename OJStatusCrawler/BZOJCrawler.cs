@@ -32,10 +32,9 @@ namespace OJStatusCrawler
                         ret.Add(log);
                     }
                     Regex findNextPage = new Regex(@"Previous Page</a>\]&nbsp;&nbsp;\[<a href=(.+?)>Next");
-                    string match = findNextPage.Match(e.PageSource).ToString();
-                    string newNext = BZOJUrlPrefix + match;
+                    var match = findNextPage.Match(e.PageSource);
+                    string newNext = BZOJUrlPrefix + match.Groups[1].Value;
                     Debug.WriteLine("下一页地址：" + newNext);
-                        //TODO: 修复翻页功能
                     if (newNext == Url)
                     {
                         Url = "";
@@ -44,6 +43,11 @@ namespace OJStatusCrawler
                     {
                         Url = newNext;
                     }
+                };
+                crawler.OnError += (s, e) =>
+                {
+                    Console.WriteLine(e.Message);
+                    throw e;
                 };
                 crawler.Start(new Uri(Url)).Wait();//线程好麻烦
                 Thread.Sleep(1000);
