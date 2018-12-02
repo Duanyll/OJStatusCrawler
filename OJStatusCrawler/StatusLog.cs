@@ -23,5 +23,6 @@ namespace OJStatusCrawler
         public DateTime Time { get; set; }
         public string ProblemID { get; set; }
         public OJStatus Status { get; set; }
+        public string URL { get; set; }
     }
 }

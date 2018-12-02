@@ -6,6 +6,6 @@ namespace OJStatusCrawler
 {
     abstract class OJCrawler
     {
-        public abstract List<StatusLog> Go(string UserName);
+        public abstract List<StatusLog> SearchForACStatus(string UserName);
     }
 }
