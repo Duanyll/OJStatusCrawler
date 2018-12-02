@@ -31,7 +31,7 @@ namespace OJStatusCrawler
                         };
                         ret.Add(log);
                     }
-                    Regex findNextPage = new Regex(@"\]&nbsp;&nbsp;\[<a href=(.+?)>Next");
+                    Regex findNextPage = new Regex(@"Previous Page</a>\]&nbsp;&nbsp;\[<a href=(.+?)>Next");
                     string match = findNextPage.Match(e.PageSource).ToString();
                     string newNext = BZOJUrlPrefix + match;
                     Debug.WriteLine("下一页地址：" + newNext);
