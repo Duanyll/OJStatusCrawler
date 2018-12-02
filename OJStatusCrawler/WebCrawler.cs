@@ -65,8 +65,7 @@ namespace OJStatusCrawler
                 var pageSource = string.Empty;
                 try
                 {
-                    if (this.OnStart != null)
-                        this.OnStart(this, new OnStartEventArgs(uri));
+                    OnStart?.Invoke(this, new OnStartEventArgs(uri));
                     Stopwatch watch = new Stopwatch();
                     watch.Start();
                     HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
@@ -112,7 +111,6 @@ namespace OJStatusCrawler
                 catch (Exception ex)
                 {
                     OnError?.Invoke(this, ex);
-
                 }
                 return pageSource;
             });
