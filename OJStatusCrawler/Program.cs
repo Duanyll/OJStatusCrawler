@@ -8,8 +8,9 @@ namespace OJStatusCrawler
         {
             Console.WriteLine("请输入用户名:");
             string UserName = Console.ReadLine();
-            BZOJCrawler crawler = new BZOJCrawler();
+            var crawler = new HDUCrawler();
             var list = crawler.SearchForACStatus(UserName);
+            Console.WriteLine("抓取完毕");
             foreach(var i in list)
             {
                 Console.WriteLine(i.ProblemID);

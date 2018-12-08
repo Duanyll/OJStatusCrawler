@@ -26,7 +26,7 @@ namespace OJStatusCrawler
         public long millseconds { get; set; }
         public string PageSource { get; set; }
 
-        public OnCompletedEventArgs(Uri uri,int threadid,long time,string source)
+        public OnCompletedEventArgs(Uri uri, int threadid, long time, string source)
         {
             Uri = uri;
             ThreadID = threadid;
@@ -52,6 +52,8 @@ namespace OJStatusCrawler
         /// </summary>
         public CookieContainer CookieContainer { get; set; }
 
+        const string UAString = "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36";
+
         /// <summary>
         /// 异步创建爬虫
         /// </summary>
@@ -73,7 +75,7 @@ namespace OJStatusCrawler
                     //定义文档类型及编码
                     request.ContentType = "application/x-www-form-urlencoded";
                     request.AllowAutoRedirect = false;//禁止自动跳转
-                    request.UserAgent = "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36";
+                    request.UserAgent = UAString;
                     //定义请求超时事件为5s
                     request.Timeout = 5000;
                     //长连接
