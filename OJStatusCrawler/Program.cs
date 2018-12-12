@@ -12,7 +12,7 @@ namespace OJStatusCrawler
 命令行使用方法:
 user:   指定用户名,若不指定,则从stdin读入
 oj:     指定OJ,若不指定,则从stdin读入
-            目前支持bzoj,hdu
+            目前支持bzoj,hdu,poj
 output: 指定输出文件(默认result.md),附加到文件末尾
 mode:   firstac(默认),ac,all(尚未支持)
 reverse:是否倒序输出(默认true)
@@ -69,6 +69,9 @@ reverse:是否倒序输出(默认true)
                     break;
                 case "hdu":
                     crawler = new HDUCrawler();
+                    break;
+                case "poj":
+                    crawler = new POJCrawler();
                     break;
                 default:
                     Console.WriteLine("OJ代码未知或尚未支持");
